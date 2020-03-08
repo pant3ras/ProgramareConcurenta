@@ -65,7 +65,7 @@ int main(){
 					break;
 				}else{
                     printf("Write the number you wish from the bellow list:\n1.quit\n2.login\n3.register")
-                    pid_t child_pid
+                    pid_t child_pid;
                     switch(child_pid=fork())
                     {
                         case -1:{
