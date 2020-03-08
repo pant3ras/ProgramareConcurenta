@@ -64,7 +64,7 @@ int main(){
 					printf("Disconnected from %s:%d\n", inet_ntoa(newAddr.sin_addr), ntohs(newAddr.sin_port));
 					break;
 				}else{
-                    printf("Write the number you wish from the bellow list:\n1.quit\n2.login\n3.register")
+                    printf("Write the number you wish from the bellow list:\n1.quit\n2.login\n3.register");
                 
                     // switch(fork())
                     // {
