@@ -8,7 +8,9 @@
 #include <arpa/inet.h>
 
 #define PORT 4567
-
+void afisare_meniu() {
+	printf("Selected one of the following numbers: \n1. For a joke\n2.For the truth\n3.For nothing\n");
+}
 int main(){
 
 	int clientSocket, ret;
@@ -33,14 +35,16 @@ int main(){
 		exit(1);
 	}
 	printf("[+]Connected to Server.\n");
+        printf("[+] for Menu write menu\n");
+while(1) {
 
-	while(1){
-		printf("Write the number you wish from the bellow list:\n1.quit\n2.login\n3.register");
-                
+if(strcmp(buffer,"menu") == 0) {
+afisare_meniu();
+}
+printf("CLIENT:\t");
+                scanf("%s", &buffer[0]);
+                send(clientSocket, buffer, strlen(buffer), 0);
 
-		printf("Client: \t");
-		scanf("%s", &buffer[0]);
-		send(clientSocket, buffer, strlen(buffer), 0);
 
 		if(strcmp(buffer, ":exit") == 0){
 			close(clientSocket);

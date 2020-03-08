@@ -48,33 +48,65 @@ int main(){
 	}
 
 
-	while(1){
-		newSocket = accept(sockfd, (struct sockaddr*)&newAddr, &addr_size);
-		if(newSocket < 0){
-			exit(1);
-		}
-		printf("Connection accepted from %s:%d\n", inet_ntoa(newAddr.sin_addr), ntohs(newAddr.sin_port));
 
-		if((childpid = fork()) == 0){
-			close(sockfd);
+                        while(1){
+                                recv(newSocket, buffer, 1024, 0);
 
-			while(1){
-				recv(newSocket, buffer, 1024, 0);
-				if(strcmp(buffer, ":exit") == 0){
-					printf("Disconnected from %s:%d\n", inet_ntoa(newAddr.sin_addr), ntohs(newAddr.sin_port));
-					break;
-				}else{
-                    printf("Client: %s\n", buffer);
-					send(newSocket, buffer, strlen(buffer), 0);
-					bzero(buffer, sizeof(buffer));
-				}
-			}
-		}
+                                if(strcmp(buffer, ":exit") == 0){
+                                        printf("Disconnected from %s:%d\n", inet_ntoa(newAddr.sin_addr)$
+                                        break;
+                        }
 
-	}
+else if(strcmp(buffer, "1") == 0){
+bzero(msg,100);
+printf("am primit numarul: %s", buffer);
+strcat(msg, ". Due to Coronavirus all TCP applications have to be converted to UDP to avoid Handshakes!");
+strcat(buffer, msg);
+send(newSocket, buffer, strlen(buffer),0);
+printf("send joke :)) ");
+bzero(buffer,100 );
+}
 
-	close(newSocket);
+else if(strcmp(buffer,"2") == 0){
+bzero(msg,100);
+printf("am primit numarul: %s", buffer);
+strcat(msg, ". I do not know what to do herrreee!!!!");
+strcat(buffer, msg);
+send(newSocket,buffer, strlen(buffer), 0);
+printf("send truth :(");
+bzero(buffer, 100);
+}
+else if(strcmp(buffer,"3") == 0){
+printf("am primit numarul: %s\n", buffer);
+strcat(msg, ". Nothing.");
+strcat(buffer, msg);
+send(newSocket, buffer, strlen(buffer), 0);
+printf("send nada\n");
+bzero(buffer, 100);
+}
+
+else if(strcmp(buffer,"4") == 0) {
+bzero(msg,100);
+printf("am primit numarul: %s\n", buffer);
+strcat(msg, ". Acesta e un test sa vedem daca merge");
+strcat(buffer, msg);
+send(newSocket, buffer, strlen(buffer),0);
+bzero(buffer, 100);
+}
+
+else{
+        printf("Client: %s\n", buffer);
+        send(newSocket, buffer, strlen(buffer), 0);
+        bzero(buffer, sizeof(buffer));
+                                }
+        }
+}
+        }
+
+        close(newSocket);
 
 
-	return 0;
+        return 0;
+
+
 }
