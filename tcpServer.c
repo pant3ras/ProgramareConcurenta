@@ -64,16 +64,7 @@ int main(){
 					printf("Disconnected from %s:%d\n", inet_ntoa(newAddr.sin_addr), ntohs(newAddr.sin_port));
 					break;
 				}else{
-                    printf("Write the number you wish from the bellow list:\n1.quit\n2.login\n3.register");
-                
-                    // switch(fork())
-                    // {
-                    //     case -1:{
-                    //         fprintf(stderr, "fork -1\n");
-                    //         exit(-1);
-                    //     }
-                    // }
-					printf("Client: %s\n", buffer);
+                    printf("Client: %s\n", buffer);
 					send(newSocket, buffer, strlen(buffer), 0);
 					bzero(buffer, sizeof(buffer));
 				}

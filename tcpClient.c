@@ -35,6 +35,9 @@ int main(){
 	printf("[+]Connected to Server.\n");
 
 	while(1){
+		printf("Write the number you wish from the bellow list:\n1.quit\n2.login\n3.register");
+                
+
 		printf("Client: \t");
 		scanf("%s", &buffer[0]);
 		send(clientSocket, buffer, strlen(buffer), 0);
